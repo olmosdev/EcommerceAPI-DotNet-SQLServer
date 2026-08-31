@@ -1,3 +1,5 @@
 .vs
 .env
 Commands.txt
+obj
+bin

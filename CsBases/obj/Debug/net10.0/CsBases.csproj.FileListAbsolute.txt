@@ -1,0 +1,14 @@
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\bin\Debug\net10.0\CsBases.exe
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\bin\Debug\net10.0\CsBases.deps.json
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\bin\Debug\net10.0\CsBases.runtimeconfig.json
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\bin\Debug\net10.0\CsBases.dll
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\bin\Debug\net10.0\CsBases.pdb
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\CsBases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\CsBases.AssemblyInfoInputs.cache
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\CsBases.AssemblyInfo.cs
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\CsBases.csproj.CoreCompileInputs.cache
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\CsBases.dll
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\refint\CsBases.dll
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\CsBases.pdb
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\CsBases.genruntimeconfig.cache
+C:\Users\Diego Olmos\Desktop\DotNET Backend DotNET Core SQL Server y seguridad JWT\CsBases\obj\Debug\net10.0\ref\CsBases.dll

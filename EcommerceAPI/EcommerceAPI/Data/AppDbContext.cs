@@ -13,4 +13,5 @@ public class AppDbContext : DbContext
 
     // This represents a table in the database.
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Product> Products { get; set; }
 }

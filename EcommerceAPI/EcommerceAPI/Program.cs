@@ -3,6 +3,7 @@ using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using EcommerceAPI.Repository.IRepository;
 using EcommerceAPI.Repository;
+using EcommerceAPI.Constants;
 
 Env.Load();
 
@@ -20,6 +21,15 @@ builder.Services.AddSwaggerGen();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// CORS
+builder.Services.AddCors( options =>
+{
+    options.AddPolicy(PolicyNames.AllowSpecificOrigin, builder =>
+    {
+        builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    });
+} );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +41,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(PolicyNames.AllowSpecificOrigin);
 
 app.UseAuthorization();
 

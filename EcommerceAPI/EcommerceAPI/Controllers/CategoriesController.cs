@@ -1,13 +1,16 @@
 using AutoMapper;
+using EcommerceAPI.Constants;
 using EcommerceAPI.Models;
 using EcommerceAPI.Models.Dtos;
 using EcommerceAPI.Repository.IRepository;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    // [EnableCors(PolicyNames.AllowSpecificOrigin)]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
@@ -22,6 +25,7 @@ namespace EcommerceAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        // [EnableCors(PolicyNames.AllowSpecificOrigin)]
         // IActionResult represents the result of an HTTP action method, encapsulating the HTTP status code and response payload (e.g., 200 OK, 404 Not Found).
         public IActionResult GetCategories()
         {

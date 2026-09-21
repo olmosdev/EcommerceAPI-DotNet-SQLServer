@@ -1,0 +1,231 @@
+{
+  "info": {
+    "_postman_id": "dc2a0515-6961-46d7-8b69-c86c6f0f5371",
+    "name": "EcommerceAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "45093724",
+    "_collection_link": "https://go.postman.co/collection/45093724-dc2a0515-6961-46d7-8b69-c86c6f0f5371?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Update Category",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMDIiLCJ1c2VybmFtZSI6InZhbGVyaWE2OSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc5MDAwNTM5NSwiZXhwIjoxNzkwMDEyNTk1LCJpYXQiOjE3OTAwMDUzOTV9.MSeHXqGEcntAHZS3BMulVXjqKbK2y-eV_dptLUz1RZA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Techonology 3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5127/api/Categories/1002",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5127",
+              "path": [
+                "api",
+                "Categories",
+                "1002"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMDIiLCJ1c2VybmFtZSI6InZhbGVyaWE2OSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc5MDAwNTk1MiwiZXhwIjoxNzkwMDEzMTUyLCJpYXQiOjE3OTAwMDU5NTJ9.ww383DAQzp_DK_KsEhfXmAiDcMPSFVdlcnBPl9AWwGM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5127/api/Categories/1002",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5127",
+              "path": [
+                "api",
+                "Categories",
+                "1002"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMDIiLCJ1c2VybmFtZSI6InZhbGVyaWE2OSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc5MDAwNTM5NSwiZXhwIjoxNzkwMDEyNTk1LCJpYXQiOjE3OTAwMDUzOTV9.MSeHXqGEcntAHZS3BMulVXjqKbK2y-eV_dptLUz1RZA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Technology\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5127/api/Categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5127",
+              "path": [
+                "api",
+                "Categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5127/api/Categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5127",
+              "path": [
+                "api",
+                "Categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Category By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5127/api/Categories/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5127",
+              "path": [
+                "api",
+                "Categories",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"valeria\",\r\n  \"name\": \"valeria69\",\r\n  \"password\": \"12345\",\r\n  \"role\": \"Admin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5127/api/Users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5127",
+              "path": [
+                "api",
+                "Users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Access",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"valeria69\",\r\n  \"password\": \"12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5127/api/Users/Login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5127",
+              "path": [
+                "api",
+                "Users",
+                "Login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

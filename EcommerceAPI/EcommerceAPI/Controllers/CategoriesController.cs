@@ -3,6 +3,7 @@ using EcommerceAPI.Constants;
 using EcommerceAPI.Models;
 using EcommerceAPI.Models.Dtos;
 using EcommerceAPI.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace EcommerceAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     // [EnableCors(PolicyNames.AllowSpecificOrigin)]
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
@@ -22,6 +24,7 @@ namespace EcommerceAPI.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -37,7 +40,8 @@ namespace EcommerceAPI.Controllers
             }
             return Ok(categoriesDto);
         }
-
+        
+        [AllowAnonymous]
         [HttpGet("{id:int}", Name = "GetCategory")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

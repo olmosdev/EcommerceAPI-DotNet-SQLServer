@@ -7,6 +7,7 @@ using EcommerceAPI.Constants;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using Microsoft.AspNetCore.Mvc;
 
 Env.Load();
 
@@ -28,6 +29,14 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAutoMapper(config => { }, typeof(Program).Assembly);
+
+// Caching
+builder.Services.AddResponseCaching(options =>
+{
+    options.MaximumBodySize = 1024 * 1024;
+    options.UseCaseSensitivePaths = true;
+});
+
 //Authentication Service for JWT
 builder.Services.AddAuthentication(options =>
 {
@@ -46,7 +55,21 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers( option =>
+{
+    // Caching Profiles
+    // option.CacheProfiles.Add("Default10", new CacheProfile()
+    // {
+    //     Duration = 10
+    // });
+    // option.CacheProfiles.Add("Default20", new CacheProfile()
+    // {
+    //     Duration = 20
+    // });
+    option.CacheProfiles.Add(CacheProfiles.Default10, CacheProfiles.Profile10);
+    option.CacheProfiles.Add(CacheProfiles.Default20, CacheProfiles.Profile20);
+} );
+
 builder.Services.AddSwaggerGen(
     options =>
   {
@@ -91,6 +114,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(PolicyNames.AllowSpecificOrigin);
+
+app.UseResponseCaching();
 
 app.UseAuthentication();
 app.UseAuthorization();

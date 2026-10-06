@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using AutoMapper;
 using EcommerceAPI.Constants;
 using EcommerceAPI.Models;
@@ -7,9 +8,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EcommerceAPI.Controllers
+namespace EcommerceAPI.Controllers.V1
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")] // This controller will respond to API version 1.0 requests and 2.0
+    // [ApiVersion("2.0")]
     [ApiController]
     // [EnableCors(PolicyNames.AllowSpecificOrigin)]
     [Authorize(Roles = "Admin")]
@@ -28,8 +31,10 @@ namespace EcommerceAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        // [MapToApiVersion("1.0")]
         // [EnableCors(PolicyNames.AllowSpecificOrigin)]
         // IActionResult represents the result of an HTTP action method, encapsulating the HTTP status code and response payload (e.g., 200 OK, 404 Not Found).
+        [Obsolete("This method is obsolete. Use GetCategoriesById from V2 instead.")] // Visualization via Swagger
         public IActionResult GetCategories()
         {
             var categories = _categoryRepository.GetCategories();

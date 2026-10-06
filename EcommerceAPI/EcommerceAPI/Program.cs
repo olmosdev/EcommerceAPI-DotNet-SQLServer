@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using Microsoft.AspNetCore.Mvc;
+using Asp.Versioning;
 
 Env.Load();
 
@@ -55,6 +56,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Caching Profiles
 builder.Services.AddControllers( option =>
 {
     // Caching Profiles
@@ -70,25 +72,60 @@ builder.Services.AddControllers( option =>
     option.CacheProfiles.Add(CacheProfiles.Default20, CacheProfiles.Profile20);
 } );
 
-builder.Services.AddSwaggerGen(
-    options =>
-  {
-      options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-      {
-          Description = "Our API uses JWT authentication with the Bearer scheme.. \n\r\n\r" +
+// Swagger/OpenAPI configuration
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "Our API uses JWT authentication with the Bearer scheme.. \n\r\n\r" +
                       "Enter the token generated during login below..\n\r\n\r" +
                       "Example: \"12345abcdef\"",
-          Name = "Authorization",
-          In = ParameterLocation.Header,
-          Type = SecuritySchemeType.Http,
-          Scheme = "Bearer"
-      });
-      options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
-    {
-      [new OpenApiSecuritySchemeReference("Bearer", document)] = new List<string>()
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer"
     });
-  }
-);
+
+    options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+    {
+        [new OpenApiSecuritySchemeReference("Bearer", document)] = new List<string>()
+    });
+
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Ecommerce API",
+        Description = "API for managing products and users",
+        TermsOfService = new Uri("https://olmosdev.com/terms"),
+        Contact = new OpenApiContact
+        {
+            Name = "olmosdev",
+            Url = new Uri("https://olmosdev.com")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Use License",
+            Url = new Uri("https://olmosdev.com/license")
+        }
+    });
+    options.SwaggerDoc("v2", new OpenApiInfo
+    {
+        Version = "v2",
+        Title = "Ecommerce API V2",
+        Description = "API for managing products and users",
+        TermsOfService = new Uri("https://olmosdev.com/terms"),
+        Contact = new OpenApiContact
+        {
+            Name = "olmosdev",
+            Url = new Uri("https://olmosdev.com")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "Use License",
+            Url = new Uri("https://olmosdev.com/license")
+        }
+    });
+});
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -101,6 +138,20 @@ builder.Services.AddCors(options =>
     });
 });
 
+// API Versioning
+var apiVersioningBuilder = builder.Services.AddApiVersioning(option =>
+{
+    option.AssumeDefaultVersionWhenUnspecified = true;
+    option.DefaultApiVersion = new ApiVersion(1, 0);
+    option.ReportApiVersions = true; // To view available API versions
+    // option.ApiVersionReader = ApiVersionReader.Combine(new QueryStringApiVersionReader("api-version")); //?api-version
+});
+apiVersioningBuilder.AddApiExplorer(option =>
+{
+    option.GroupNameFormat = "'v'VVV"; // v1, v2, v3...
+    option.SubstituteApiVersionInUrl = true; // api/v{version}/products
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -108,7 +159,11 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI( options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.SwaggerEndpoint("/swagger/v2/swagger.json", "v2");
+    } );
 }
 
 app.UseHttpsRedirection();

@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using AutoMapper;
 using EcommerceAPI.Models.Dtos;
 using EcommerceAPI.Repository.IRepository;
@@ -8,8 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace EcommerceAPI.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    // [ApiVersion("1.0")]
+    // [ApiVersion("2.0")]
+    [ApiVersionNeutral] // This controller will respond to all API versions
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;

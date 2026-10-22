@@ -35,13 +35,13 @@ namespace EcommerceAPI.Controllers
             return Ok(usersDto);
         }
 
-        [HttpGet("{id:int}", Name = "GetUser")]
+        [HttpGet("{id}", Name = "GetUser")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetUser(int id)
+        public IActionResult GetUser(string id)
         {
             var user = _userRepository.GetUser(id);
             if (user == null)

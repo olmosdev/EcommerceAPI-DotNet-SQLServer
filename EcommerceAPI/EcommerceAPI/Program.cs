@@ -173,6 +173,9 @@ if (app.Environment.IsDevelopment())
     } );
 }
 
+// Enabling static files
+app.UseStaticFiles();
+
 app.UseHttpsRedirection();
 
 app.UseCors(PolicyNames.AllowSpecificOrigin);
